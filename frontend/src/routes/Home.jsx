@@ -1,6 +1,9 @@
 import { Calendar, Book, Clock, ChevronRight } from "lucide-react";
 import React, { useState } from "react";
-export default function home() {
+import { useNavigate } from "react-router-dom";
+
+export default function Home() {
+	const navigate = useNavigate();
   const [studyRecords, setStudyRecords] = useState([
     {
       id: 1,
@@ -174,7 +177,12 @@ export default function home() {
                 </div>
                 <button
                   className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
-                  onClick={() => alert(`Reviewing: ${record.subject}`)}
+                  onClick={() => {
+					  // 페이지 이동과 함께 props (record) 전송
+					  navigate(`/review/${record.id}`, {
+						state: { id: record.id, subject: record.subject, subcategory: record.subcategory, content: record.content }
+					  });
+				  }}
                 >
                   Review
                   <ChevronRight className="h-4 w-4 ml-1" />

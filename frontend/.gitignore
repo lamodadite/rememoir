@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+/Users/jongmlee/rememoir/frontend/openapi-apikey
+*openapi-apikey*
